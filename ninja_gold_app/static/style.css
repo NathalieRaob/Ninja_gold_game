@@ -1,0 +1,10 @@
+#wrapper{
+    margin: 0px auto;
+    width: 900px;
+    padding: 10px;
+}
+
+.form{
+    display: inline-block;
+    width: 30px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+</head>
+<style>
+  #wrapper{
+    margin: 0px auto;
+    width: 1000px;
+    padding: 100px;
+    text-align: center;
+    background-color: #FADA4E;
+    
+  }
+  .form{
+    display: inline-block;
+    width: 200px;
+    border: 2px solid #cc9439;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #DAB641;
+
+  }
+  a{
+    text-decoration: none;
+    font-size: 22px;
+    font-family: monospace;
+    font-weight: 30px;
+    width: 60px;
+    border: #CC9439 solid 1px;
+    border-radius: 4px;
+    color:#FFF466;
+    background-color: #DAB641;
+  }
+  input{
+    background-color: #FFF466;
+  }
+  h1{
+    font-weight: bolder;
+    font-size: 60px;
+    font-family: fantasy;
+    color:#CC9439;
+  }
+  h5{
+    font-size: 30px;
+    color:#CC9439;
+    font-family: monospace;
+  }
+  h3{
+    color: #CC9439;
+  }
+
+  span{
+    color: white;
+  }
+</style>
+
+ 
+<body>
+  <div id="wrapper">
+      <h1>Welcome to Ninja Gold!</h1>
+      <h5>Earn golds to win</h5>
+      <h3>Your Gold: <span>{{request.session.gold}}</span></h3>
+
+      <div id="forms">
+
+        <div class="form">
+          <h4>Farm</h4>
+          <p>(earns 10-20 golds)</p>
+          <form action="/process_money" method=POST>
+            {% csrf_token %}
+            <input type="hidden" name='farm'>
+            <input type="submit" value='Find Gold'>
+          </form>
+        </div>
+
+        <div class="form">
+          <h4>Cave </h4>
+          <p>(earns 5-10 golds)</p>
+          <form action="/process_money" method=POST>
+            {% csrf_token %}
+            <input type="hidden" name='cave'>
+            <input type="submit" value='Find Gold'>
+          </form>
+        </div>
+
+        <div class="form">
+          <h4>House</h4>
+          <p>(earns 2-5 golds)</p>
+          <form action="/process_money" method=POST>
+            {% csrf_token %}
+            <input type="hidden" name='house'>
+            <input type="submit" value='Find Gold'>
+          </form>
+        </div>
+
+        <div class="form">
+          <h4>Casino</h4>
+          <p>(earns/takes 0-50 golds)</p>
+          <form action="/process_money" method=POST>
+            {% csrf_token %}
+            <input type="hidden" name='casino'>
+            <input type="submit" value='Find Gold'>
+          </form>
+        </div>
+
+      </div>
+
+    <br><a href="/reset">RESET</a>
+
+  </div>
+</body>
+</html>
